@@ -49,8 +49,15 @@ Google 404 而落到 `api-failed`，测的就不再是「全部回显」这件�
 ```sh
 git remote add upstream https://github.com/nicearrack/dsh-translator.git
 git fetch upstream --tags
-git diff upstream/v0.4.3 --stat
+git diff upstream/v0.4.3 --stat --ignore-cr-at-eol
 ```
+
+`--ignore-cr-at-eol` 是必须的：上游把一部分文本文件（`LICENSE`、`package.json`、`tests/*` 等）
+以 **CRLF** 提交，本 fork 用 `.gitattributes` 统一成了 LF，否则 diff 里会混着一堆纯换行差异。
+
+忽略换行之后，改动只有：`client/core.js`、`lib/client.js`、`lib/free-translate.js`、`lib/index.js`、
+`src/free-translate.js`、`src/index.js`、`tests/client.test.mjs`、`tests/host.test.mjs`、
+`package.json`、`README.md`、`README.zh.md`，加上新增的 `.gitattributes` / `CHANGELOG.md` / 本文件。
 
 `lib/` 里的三个文件可以用脚本回推：`client/core.js` 是 `lib/client.js` 去掉 loader 包装后的正文，
 `src/index.js` / `src/free-translate.js` 与 `lib/` 下同名文件逐字节相同。所以
