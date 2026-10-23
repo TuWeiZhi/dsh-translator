@@ -1,0 +1,27 @@
+# Everything this repository can verify without a harness instance.
+#
+# `npm run check` is the whole gate: syntax, the committed build output
+# (`lib/` must match `src/` and `client/`, with no extra files), and the
+# regression suites in `tests/`.
+#
+# The real-browser suite (`npm run test:smoke`) is deliberately NOT here: it
+# drives a live DSH instance with this plugin installed and a token-bearing
+# URL, which this repository cannot boot on its own. Run it locally before a
+# release — see tests/client.smoke.mjs for the two prerequisites.
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm ci
+      - run: npm run check

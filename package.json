@@ -1,0 +1,84 @@
+{
+  "name": "@nicearrack/dsh-translator",
+  "version": "0.5.0",
+  "description": "Youdao-style word-selection translation for the DSH web GUI. Select text anywhere, click the floating button, get a translation \u2014 by default through keyless public translation endpoints, with the harness's own LLM as the other engine. \u6709\u9053\u98ce\u683c\u5212\u8bcd\u7ffb\u8bd1\uff1aDSH Web GUI \u91cc\u5212\u9009\u6587\u672c\u5373\u73b0\u60ac\u6d6e\u7ffb\u8bd1\u6309\u94ae\uff0c\u9ed8\u8ba4\u8d70\u514d Key \u7684\u516c\u5171\u7ffb\u8bd1\u63a5\u53e3\uff0c\u4e5f\u53ef\u5207\u6362\u4e3a harness \u81ea\u5e26\u5927\u6a21\u578b\u3002",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "icon.svg",
+    "README.md",
+    "README.zh.md",
+    "NOTICE.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "node scripts/build.js",
+    "verify:build": "node scripts/verify-build.js",
+    "prepublishOnly": "node scripts/build.js",
+    "test": "node --test \"tests/*.test.mjs\"",
+    "test:host": "node scripts/host-sim.mjs",
+    "test:smoke": "node tests/client.smoke.mjs",
+    "screenshots": "node scripts/regenerate-screenshots.js",
+    "check": "node --check src/index.js && node --check src/free-translate.js && node --check tests/client.smoke.mjs && node --check scripts/regenerate-screenshots.js && node -e \"const fs=require('fs');new Function(fs.readFileSync('client/core.js','utf8'));console.log('syntax OK')\" && node scripts/verify-build.js && node --test \"tests/*.test.mjs\""
+  },
+  "keywords": [
+    "dsh",
+    "deepseek-harness",
+    "dsh-plugin",
+    "deepseek-harness-plugin",
+    "cordis",
+    "plugin",
+    "translation",
+    "free-translation-api",
+    "no-api-key",
+    "word-selection",
+    "word-selection-translation",
+    "\u5212\u8bcd\u7ffb\u8bd1"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.19.0",
+    "dsh": ">=0.2.1-alpha.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nicearrack/dsh-translator.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/schemastery": "~3.18.5-alpha.1"
+  },
+  "devDependencies": {
+    "@deepseek-ai/schemastery": "~3.18.5-alpha.1"
+  },
+  "dependencies": {
+    "@deepseek-ai/cosmokit": "~1.8.6-alpha.1"
+  },
+  "dsh": {
+    "manifestVersion": 1,
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-layout",
+        "@deepseek-ai/dsh-client-ui-plugin-manager"
+      ]
+    }
+  }
+}

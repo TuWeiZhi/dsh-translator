@@ -1,0 +1,33 @@
+# dependencies
+node_modules/
+
+# NOTE: lib/ is deliberately NOT ignored. A git-hosted install is packed from
+# the repository and never runs a build script, so the built Host and Client
+# halves have to be committed. `npm run verify:build` (part of `npm run check`)
+# fails when they drift from src/ and client/.
+
+# credentials — a project-level .npmrc can carry an _authToken, so it must never
+# be staged by a `git add -A`
+.npmrc
+
+# the in-repo screenshot font (25 MB) and the fontconfig the screenshot tool
+# generates from it at run time
+.fonts/
+.fonts-cache/
+
+# an isolated DSH_HOME for driving the browser suites against a throwaway
+# instance; it holds a copy of a profile and must never be committed
+.e2e-home/
+
+# playwright MCP page snapshots and console logs from a browser probe
+.playwright-mcp/
+
+# npm's cache when it is redirected into the repo (the sandbox cannot write
+# ~/.npm, so publish/pack run with --cache ./.npm-cache)
+.npm-cache/
+
+# editors / OS
+.DS_Store
+*.swp
+.idea/
+.vscode/

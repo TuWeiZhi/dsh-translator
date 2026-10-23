@@ -1,0 +1,15 @@
+# 统一换行符：仓库里一律 LF，检出时也不转换。
+# 翻译插件的 `lib/` 是 `npm run build` 的产物、并且被 `verify-build.js` 逐字节比对，
+# 一旦工作区被 core.autocrlf 换成 CRLF，`npm run verify:build` 会误报漂移。
+* text=auto eol=lf
+
+# 二进制文件不做任何转换
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.ico binary
+*.woff binary
+*.woff2 binary
+*.zip binary
