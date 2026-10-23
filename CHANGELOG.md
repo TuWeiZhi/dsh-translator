@@ -14,6 +14,13 @@
   版本已存在则跳过，成功后创建 GitHub Release，支持 `dry_run` 演练。
 - 发布时 npm 会自动附加 provenance 证明（不需要 `--provenance`，更不要写 `--provenance=false`）。
 
+### 修复
+
+- `package-lock.json` 里的 `resolved` 地址原先指向 `registry.npmmirror.com`（本地用镜像源
+  `npm install` 的副作用）。GitHub runner 上 `npm ci` 会因此报
+  `EALLOWREMOTE: Fetching packages of type "remote" have been disabled` 直接失败。
+  已把三处地址改回 `registry.npmjs.org`（`integrity` 不变，同一份 tarball）。
+
 ## 0.5.0 — 2026-10-23
 
 基线：上游 `v0.4.3`（2026-10-16）。
