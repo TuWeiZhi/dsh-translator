@@ -79,6 +79,22 @@ npm install && npm run build && npm test
 冲突集中在 `src/free-translate.js`（`PROVIDERS`、`CALLS`、`translateFree` 尾部）与
 `client/core.js`（面板相关的新增块）；`lib/` 是产物，冲突时直接 `npm run build` 重新生成即可。
 
+## 想发到自己的仓库 / npm？先看这一节
+
+本仓库**故意保留上游的包名 `@nicearrack/dsh-translator`**，方便随时和上游对比、也能直接用
+上游的安装命令。要挂到自己的 scope 下，改这几处（`lib/` 不要手改，改完 `npm run build`）：
+
+| 位置 | 改什么 |
+|---|---|
+| `package.json` | `name`、`repository.url`、`bugs.url`、`homepage` |
+| `cordis.patch.yml` | 两处 `@nicearrack/dsh-translator`（bundle 里加载的包名） |
+| `client/core.js` | `const PACKAGE_NAME = '@nicearrack/dsh-translator'`（设置表单的 key，必须和包名一致） |
+| `tests/client.test.mjs` | 断言 `PACKAGE_NAME` 的地方 |
+| `README.md` / `README.zh.md` | 安装命令里的包名与 GitHub 地址 |
+
+改完必须 `npm run build && npm test`：`lib/client.js` 里嵌着 `JSON.stringify(pkg.name)`，
+不重新构建的话装上去的插件 id 和 `package.json` 会对不上。
+
 ## 许可
 
 MIT，见 [`LICENSE`](LICENSE)（保留上游版权行）。本 fork 的改动同样以 MIT 提供。
