@@ -3,6 +3,17 @@
 本文件只记录 **fork 相对上游的改动**。上游更早的历史见
 [上游仓库](https://github.com/nicearrack/dsh-translator) 的提交记录与 Releases。
 
+## 0.5.1 — 2026-10-23
+
+发布链路改动，**包内容与 `0.5.0` 完全相同**（`lib/`、`client/`、`src/` 逐字节未变）。
+
+### 新增
+
+- `.github/workflows/publish.yml`：手动触发的发版流水线，走 **npm Trusted Publishing (OIDC)**，
+  仓库里不需要任何 token。发版前跑 `npm run check`（语法 + `lib/` 与 `src`/`client` 一致性 + 回归用例），
+  版本已存在则跳过，成功后创建 GitHub Release，支持 `dry_run` 演练。
+- 发布时 npm 会自动附加 provenance 证明（不需要 `--provenance`，更不要写 `--provenance=false`）。
+
 ## 0.5.0 — 2026-10-23
 
 基线：上游 `v0.4.3`（2026-10-16）。
