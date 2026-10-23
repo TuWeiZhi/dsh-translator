@@ -24,8 +24,8 @@ Two engines, switchable in the plugin's settings:
 On the DSH **Plugins** page, click **Add plugin** and give either the npm package name or the GitHub address:
 
 ```
-@nicearrack/dsh-translator
-https://github.com/nicearrack/dsh-translator
+@tuweizhi/dsh-translator
+https://github.com/TuWeiZhi/dsh-translator
 ```
 
 To remove it later, uninstall it from that same page.

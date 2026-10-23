@@ -2195,7 +2195,7 @@ function TranslatorRoot(props) {
 // ---------------------------------------------------------------------------
 
 /** The bundle's package name: the `plugins.bundle.config` cell key. */
-const PACKAGE_NAME = '@nicearrack/dsh-translator'
+const PACKAGE_NAME = '@tuweizhi/dsh-translator'
 
 /** Settings namespace: the profile entry id our own patch row declares. */
 const SETTINGS_NS = 'dsh-translator'

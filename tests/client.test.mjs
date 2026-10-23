@@ -177,7 +177,7 @@ test('client: injects slots + locale + configForms and contributes both seats', 
   assert.deepEqual(bySlot.get('plugins.bundle.config').options, {
     name: 'plugins.bundle.config', key: core.PACKAGE_NAME, locale: 'dsh-translator',
   })
-  assert.equal(core.PACKAGE_NAME, '@nicearrack/dsh-translator')
+  assert.equal(core.PACKAGE_NAME, '@tuweizhi/dsh-translator')
   for (const entry of registrations) assert.equal(typeof entry.component, 'function')
   // The registered component receives the shared entry form, since this seat
   // passes no `form` prop of its own.

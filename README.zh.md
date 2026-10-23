@@ -22,8 +22,8 @@
 在 DSH 的**插件**页点「添加插件」，npm 包名或 GitHub 地址都可以：
 
 ```
-@nicearrack/dsh-translator
-https://github.com/nicearrack/dsh-translator
+@tuweizhi/dsh-translator
+https://github.com/TuWeiZhi/dsh-translator
 ```
 
 以后要移除，在同一个页面卸载。
