@@ -32,6 +32,17 @@ To remove it later, uninstall it from that same page.
 
 To update, uninstall it and add it again — the npm package name and the GitHub address both resolve to the latest release. The new version takes effect once DSH restarts.
 
+### From the plugin market
+
+DSH ships no central store: the **Discover** tab only lists index sources you add yourself. One index lists both of my plugins:
+
+1. Plugins page → **Experimental plugins** → **More** → enable **Custom plugin market** (a DSH bundle, off by default)
+2. **Discover** → **Index sources** → add
+   `https://raw.githubusercontent.com/TuWeiZhi/dsh-plugins-index/main/index.json`
+3. Pick the plugin in **Discover** and install
+
+Index source: [TuWeiZhi/dsh-plugins-index](https://github.com/TuWeiZhi/dsh-plugins-index).
+
 ## Usage
 
 Select text → click the floating **translate** button → the translation card appears. Drag the card by its header, or pin it so it can't be dismissed by accident. Click the translation (or the source text, or an error message) to copy it.

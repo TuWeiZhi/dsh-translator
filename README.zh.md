@@ -30,6 +30,17 @@ https://github.com/TuWeiZhi/dsh-translator
 
 要更新，在同一个页面卸载后重新添加即可——npm 包名和 GitHub 地址都会取到最新版本。重启 DSH 后新版本生效。
 
+### 从插件市场一键安装
+
+DSH 没有官方插件市场，「发现」标签页只列**你自己添加的索引源**。本 fork 维护了一份索引，两个插件都收在里面：
+
+1. 插件页 → 「实验性插件」→ **更多** → 启用**自定义插件市场**（DSH 自带的可选组合包，默认关闭）
+2. **发现** → **索引源** → 添加
+   `https://raw.githubusercontent.com/TuWeiZhi/dsh-plugins-index/main/index.json`
+3. 在「发现」里选中本插件 → 安装
+
+索引仓库：[TuWeiZhi/dsh-plugins-index](https://github.com/TuWeiZhi/dsh-plugins-index)。
+
 ## 使用
 
 划选文本 → 点击悬浮**翻译**按钮 → 译文卡片即出。按住卡片顶部可拖动；点「固定」可锁定，避免被误关。点击译文（或原文、错误信息）即可复制。
